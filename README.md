@@ -1,7 +1,7 @@
 # Texas-DPS-Appointment-Assistant
 A simple python script help you get an earlier appointment
 
-Only available for driver's license appointment
+Only available for driver's license appointment in Texas.
 
 requirements: python3 installed.
 
