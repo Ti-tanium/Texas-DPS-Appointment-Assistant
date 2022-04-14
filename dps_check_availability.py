@@ -12,6 +12,7 @@ date_of_birth = 'MM/DD/YYYY'
 last4ssn = '0000'
 zipcode = '78750'
 
+distance = 10 # only choose offices within 10 miles
 
 type_id = 71 # service type id, 71 for new driver's license
 data = {'TypeId': type_id, 'ZipCode': zipcode, 'CityName': '', 'PreferredDay': '0'}
