@@ -151,7 +151,7 @@ def startChecking():
     print("Start checking:", lookup_cnt)
     checkAvailability()
     lookup_cnt += 1
-    time.sleep(check_interval) # check every 1 min
+    time.sleep(check_interval)
 
 startChecking()
   
