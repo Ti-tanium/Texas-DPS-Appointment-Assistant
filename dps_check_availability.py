@@ -12,7 +12,8 @@ date_of_birth = 'MM/DD/YYYY'
 last4ssn = '0000'
 zipcode = '78750'
 
-distance = 10 # only choose offices within 10 miles
+distance = 10 # only choose offices within this distance. unit in miles
+check_interval = 60 # in seconds, check every 30 seconds.
 
 type_id = 71 # service type id, 71 for new driver's license
 data = {'TypeId': type_id, 'ZipCode': zipcode, 'CityName': '', 'PreferredDay': '0'}
@@ -70,6 +71,9 @@ def checkAvailability():
   # get available locations
   res = requests.post('https://publicapi.txdpsscheduler.com/api/AvailableLocation', data=str(data), headers=headers)
   locations = res.json()
+  if not type(locations)==list:
+    print("[Error] failed to request available locations.")
+    return
   locations.sort(key=lambda l:datetime.strptime(l['NextAvailableDate'], '%m/%d/%Y'))
   # filter out locations that are too distant.
   locations = [location for location in locations if location['Distance'] < distance]
@@ -147,7 +151,7 @@ def startChecking():
     print("Start checking:", lookup_cnt)
     checkAvailability()
     lookup_cnt += 1
-    time.sleep(60) # check every 1 min
+    time.sleep(check_interval) # check every 1 min
 
 startChecking()
   
