@@ -68,6 +68,7 @@ rescheduled = False
 def checkAvailability():
   global rescheduled
   global cur_appointment_date
+  global distance
   # get available locations
   res = requests.post('https://publicapi.txdpsscheduler.com/api/AvailableLocation', data=str(data), headers=headers)
   locations = res.json()
