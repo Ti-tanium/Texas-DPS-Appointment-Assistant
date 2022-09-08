@@ -1,6 +1,11 @@
 # Texas-DPS-Appointment-Assistant
 A simple python script help you get an earlier appointment at DPS, Austin TX. 
 
+Supports three types of appointment: 
+1. New Driver's License
+2. Renew License
+3. Road test
+
 ### What it does
 * The script checks appointment availabilty in all DPS offices in Austin every one minute. 
 * If you don't have any appointments, the script will found the earlist possible date and schedule it for you.
