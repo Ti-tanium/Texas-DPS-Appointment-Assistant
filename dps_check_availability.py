@@ -11,7 +11,7 @@ last_name = 'Doe'
 date_of_birth = 'MM/DD/YYYY'
 last4ssn = '0000'
 zipcode = '78750'
-type_id = 71 # service type id, 71 for new driver's license
+type_id = 71 # service type id, 71 for new driver's license, 81 for renew license, 21 for road test.
 distance = 10 # How far from the zipcode. unit in miles
 
 check_interval = 60 # in seconds, check every 60 seconds.
