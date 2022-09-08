@@ -12,6 +12,12 @@ A simple python script help you get an earlier appointment at DPS, Austin TX.
 python3 installed.
 
 ## Usage
+|Service Type| Service ID|
+|-|-|
+| Apply for first time Texas CLP/CDL | 71|
+| Change, replace or renew Texas DL/Permit | 81 |
+| Class C Road Skills Test |21|
+
 1. replace the following line in [dps_check_availability.py](https://github.com/Ti-tanium/Texas-DPS-Appointment-Assistant/blob/0eb620007c119587f0f182f83e85b2f4efa5415f/dps_check_availability.py#L8-L13) with your information
 ```python
 email = 'xxxx@gmail.com'
