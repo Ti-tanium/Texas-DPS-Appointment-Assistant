@@ -12,7 +12,7 @@ A simple python script help you get an earlier appointment at DPS, Austin TX.
 python3 installed.
 
 ## Usage
-|Service Type| Service ID|
+|Service Type| type_id |
 |-|-|
 | Apply for first time Texas CLP/CDL | 71|
 | Change, replace or renew Texas DL/Permit | 81 |
@@ -26,6 +26,7 @@ last_name = 'Doe'
 date_of_birth = 'MM/DD/YYYY'
 last4ssn = '0000'
 zipcode = '78750'
+type_id = 71 # service type id, 71 for new driver's license
 ```
 
 2. in command line, run
