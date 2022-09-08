@@ -11,11 +11,11 @@ last_name = 'Doe'
 date_of_birth = 'MM/DD/YYYY'
 last4ssn = '0000'
 zipcode = '78750'
-
-distance = 10 # only choose offices within this distance. unit in miles
-check_interval = 60 # in seconds, check every 30 seconds.
-
 type_id = 71 # service type id, 71 for new driver's license
+distance = 10 # How far from the zipcode. unit in miles
+
+check_interval = 60 # in seconds, check every 60 seconds.
+
 data = {'TypeId': type_id, 'ZipCode': zipcode, 'CityName': '', 'PreferredDay': '0'}
 credential = {'FirstName': first_name, 'LastName': last_name, 'DateOfBirth': date_of_birth, 'Last4Ssn': last4ssn}
 headers = {
