@@ -1,5 +1,5 @@
 # Texas-DPS-Appointment-Assistant
-A simple python script help you get an earlier appointment at DPS, Austin TX. 
+A simple python script help you get an earlier appointment at DPS in Texas ([Official Appointment Schdueling Website](https://public.txdpsscheduler.com/)).  
 
 Supports three types of appointment: 
 1. New Driver's License
