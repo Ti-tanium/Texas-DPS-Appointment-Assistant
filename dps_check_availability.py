@@ -41,6 +41,8 @@ headers = {
 cur_date = datetime.now()
 cur_appointment_date = datetime(cur_date.year + 1, cur_date.month, cur_date.day)
 
+BASE_URL = "https://apptapi.txdpsscheduler.com/api"
+
 # login
 print("loging in....")
 try:
@@ -50,10 +52,10 @@ try:
     'LastName': last_name,
     'LastFourDigitsSsn': last4ssn,
   }
-  res = requests.post(url='https://publicapi.txdpsscheduler.com/api/Eligibility', data=str(payload), headers=headers)
+  res = requests.post(url=BASE_URL + '/Eligibility', data=str(payload), headers=headers)
   responseId = res.json()[0]['ResponseId']
   print("Login succeed (%s)..." % responseId)
-  res = requests.post(url='https://publicapi.txdpsscheduler.com/api/Booking', data=str(payload), headers=headers)
+  res = requests.post(url=BASE_URL + '/Booking', data=str(payload), headers=headers)
   appointments = res.json()
   if not appointments:
     print("No existing appointment found.")
@@ -70,7 +72,7 @@ def checkAvailability():
   global cur_appointment_date
   global distance
   # get available locations
-  res = requests.post('https://publicapi.txdpsscheduler.com/api/AvailableLocation', data=str(data), headers=headers)
+  res = requests.post(BASE_URL + '/AvailableLocation', data=str(data), headers=headers)
   locations = res.json()
   if not type(locations)==list:
     print("[Error] failed to request available locations.")
@@ -88,7 +90,7 @@ def checkAvailability():
       'LastName': last_name,
       'LastFourDigitsSsn': last4ssn,
     }
-    res = requests.post(url='https://publicapi.txdpsscheduler.com/api/Booking', data=str(payload), headers=headers)
+    res = requests.post(url=BASE_URL + '/Booking', data=str(payload), headers=headers)
     appointments = res.json()
     if not appointments:
       print("No existing appointment found.")
@@ -105,7 +107,7 @@ def checkAvailability():
       if not availability:
         print("Fetching availability...")
         payload = {'TypeId': type_id, 'LocationId': location['Id']}
-        res = requests.post(url='https://publicapi.txdpsscheduler.com/api/AvailableLocationDates', data=str(payload), headers=headers)
+        res = requests.post(url = BASE_URL + '/AvailableLocationDates', data=str(payload), headers=headers)
         availability = res.json()
       if availability['LocationAvailabilityDates']:
         time_slots = availability['LocationAvailabilityDates'][0]['AvailableTimeSlots']
@@ -115,7 +117,7 @@ def checkAvailability():
           # hold slot
           print("Holding your slots(%s) at %s." % (selected_slot_id, scheduled_time))
           payload = {**credential, "SlotId": selected_slot_id}
-          res = requests.post(url='https://publicapi.txdpsscheduler.com/api/HoldSlot', data=str(payload), headers=headers)
+          res = requests.post(url= BASE_URL + '/HoldSlot', data=str(payload), headers=headers)
           print('Hold status:', res.json()['SlotHeldSuccessfully'])
           if res.json()['SlotHeldSuccessfully']:
             print("Rescheduling...")
@@ -133,7 +135,7 @@ def checkAvailability():
               'HomePhone': '',
             }
             try:
-              res = requests.post(url='https://publicapi.txdpsscheduler.com/api/RescheduleBooking', data=str(payload), headers=headers)
+              res = requests.post(url=BASE_URL + '/RescheduleBooking', data=str(payload), headers=headers)
               rescheduled = True
               print("Reschedule succeed, check your email for appointment details.")
               break
